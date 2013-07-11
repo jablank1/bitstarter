@@ -1,11 +1,11 @@
 vvar express = require('express');
-var fs = require('fs');
 
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-    var buffer = new Buffer(fs.readFileSync('index.html'), 'utf-8');
-    response.send(buffer.toString()));
+    var fs = require('fs');
+    var content = fs.readFileSync('index.html', 'utf8');
+    response.send(content);
 });
 
 var port = process.env.PORT || 5000;

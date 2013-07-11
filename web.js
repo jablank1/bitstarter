@@ -4,8 +4,13 @@ var fs = require('fs');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-    var index = fs.readFile('index.html');
-    response.send(indexr.toString("utf-8");
+    var index = fs.readFile('index.html', function (err, data) {
+	if (err) {
+		console.log("Error");
+		return;
+	}
+    	response.send(indexr.toString("utf-8");
+    });
 });
 
 var port = process.env.PORT || 5000;
